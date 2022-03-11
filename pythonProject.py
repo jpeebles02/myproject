@@ -13,7 +13,7 @@ def main():
         if favorite_player == "IDK":
             
             #print llist of NBA Allstars to screen for user to review
-            print(f"Here are the top players in the NBA: {all_stars}")
+            print(f"Here are the top players in the NBA:\n {all_stars}")
 
         elif favorite_player == "quit":
             break
@@ -49,7 +49,7 @@ def main():
             #dive into player information, team information, or play a game
             answer = ""
             while True:
-                answer = input(f"Do you want to: \nA) Learn more about {name}... \nB) Learn more about his team, The {team_name}... \nC) Return to previous screen \nD) Play the Higher/Lower game, comparing NBA Stars points per game...\n")
+                answer = input(f"Do you want to: \nA) Learn more about {name}... \nB) Learn more about his team, The {team_name}... \nC) Return to previous screen \nD) Play a game comparing NBA stars' points per game...\n")
                 if answer == "A":
                     print(f"Player Data: \nFirst Name: {first_name} \nLast Name: {last_name} \nHeight: {height} inches\nPosition: {position} \nTeam: {team_name}")
                 elif answer == "B":
@@ -117,7 +117,7 @@ def main():
                     game()          
                 else:
                     print("Incorrect Input. Please enter A, B, C or D")
-                    
+
 # list of NBA all stars                  
 all_stars = "Lebron James\n Giannis Antetokounmpo\n Steph Curry\n DeMar Derozan\n Nikola Jokic\n Joel Embid\n Ja Morant\n Jayson Tatum\n Trae Young \n Luka Doncic\n"
         
