@@ -117,6 +117,7 @@ def main():
                     game()          
                 else:
                     print("Incorrect Input. Please enter A, B, C or D")
+                    
 # list of NBA all stars                  
 all_stars = "Lebron James\n Giannis Antetokounmpo\n Steph Curry\n DeMar Derozan\n Nikola Jokic\n Joel Embid\n Ja Morant\n Jayson Tatum\n Trae Young \n Luka Doncic\n"
         
@@ -124,3 +125,4 @@ all_stars = "Lebron James\n Giannis Antetokounmpo\n Steph Curry\n DeMar Derozan\
 
 if __name__ == "__main__":
     main()
+

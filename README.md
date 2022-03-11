@@ -1,4 +1,3 @@
-
     Introduction
 
 NBA-based python game
