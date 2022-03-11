@@ -8,12 +8,15 @@ from art import logo, vs
 def main():
     #while loop for entry of favorite NBA Player
     while True:
-        favorite_player = input("Enter the name of your favorite NBA Player: \nEnter 'IDK' if you need more information\n")
+        favorite_player = input("Enter the name of your favorite NBA Player: \nEnter 'IDK' if you need more information: \nEnter 'quit' if you would like to quit: \n")
         #if statement to provide user with list of NBA Allstars to choose from
         if favorite_player == "IDK":
             
             #print llist of NBA Allstars to screen for user to review
             print(f"Here are the top players in the NBA: {all_stars}")
+
+        elif favorite_player == "quit":
+            break
         else:
           # define base URL
             URL = f"https://balldontlie.io/api/v1/players?search={favorite_player}"
@@ -46,14 +49,15 @@ def main():
             #dive into player information, team information, or play a game
             answer = ""
             while True:
-                answer = input(f"Do you want to: \nA) Learn more about {name}... \nB) Learn more about his team, The {team_name}... \nC) Choose another NBA Player \nD) Play the Higher/Lower game, comparing NBA Stars points per game...\n")
+                answer = input(f"Do you want to: \nA) Learn more about {name}... \nB) Learn more about his team, The {team_name}... \nC) Return to previous screen \nD) Play the Higher/Lower game, comparing NBA Stars points per game...\n")
                 if answer == "A":
-                    print(f"Player Data: \nFirst Name: {first_name} \nLast Name: {last_name} \nHeight: {height} \nPosition: {position} \nTeam:{team_name}")
+                    print(f"Player Data: \nFirst Name: {first_name} \nLast Name: {last_name} \nHeight: {height} inches\nPosition: {position} \nTeam: {team_name}")
                 elif answer == "B":
-                    print(f"Team Data: \nCity: {city} \nConference: {conference} \nDivision: {division}")
+                    print(f"Team Data: \nName: {team_name} \nCity: {city} \nConference: {conference} \nDivision: {division}")
                 elif answer == "C":
                     break
                 elif answer == "D":
+                    print("WELCOME TO THE HIGHER - LOWER GAME")
                     def get_random_player():
                       #Get data from random player
                       return random.choice(data)
@@ -63,7 +67,6 @@ def main():
                       name = player["name"]
                       position = player["position"]
                       team = player["team"]
-                      # print(f'{name}: {player["points_per_game"]}')
                       return f"{name}, plays the {position} position, for the {team}"
 
                     def check_answer(guess, a_points, b_points):
@@ -73,9 +76,10 @@ def main():
                       else:
                         return guess == "b"
 
-
+                    #game function
                     def game():
                       print(logo)
+                      #set game score to 0
                       score = 0
                       game_should_continue = True
                       player_a = get_random_player()
@@ -88,26 +92,32 @@ def main():
                         while player_a == player_b:
                           player_b = get_random_player()
 
+                        #format player data
                         print(f"Compare A: {format_data(player_a)}.")
                         print(vs)
                         print(f"Against B: {format_data(player_b)}.")
                         
-                        guess = input("Who has more points? Type 'A' or 'B': ").lower()
+                        #prompt user to guess who is the higher scorer 
+                        guess = input("Who has averages more points per game this season? PLAYER 'A' or 'B': ").lower()
                         a_points_per_game = player_a["points_per_game"]
                         b_points_per_game = player_b["points_per_game"]
+                        #call check_answer function to compare values
                         is_correct = check_answer(guess, a_points_per_game, b_points_per_game)
 
                         print(logo)
                         if is_correct:
+                          #if guess is correct user's score is increased by 1 point
                           score += 1
                           print(f"You're right! Current score: {score}.")
                         else:
+                          #if guess is incorrect users guess is decreased by 1 point 
                           game_should_continue = False
                           print(f"Sorry, that's wrong. Final score: {score}")
 
-                    game()
+                    game()          
                 else:
                     print("Incorrect Input. Please enter A, B, C or D")
+# list of NBA all stars                  
 all_stars = "Lebron James\n Giannis Antetokounmpo\n Steph Curry\n DeMar Derozan\n Nikola Jokic\n Joel Embid\n Ja Morant\n Jayson Tatum\n Trae Young \n Luka Doncic\n"
         
 
